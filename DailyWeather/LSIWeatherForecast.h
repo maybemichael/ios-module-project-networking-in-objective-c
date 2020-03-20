@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property CLLocationCoordinate2D location;
 @property LSICurrentForecast *current;
-@property NSArray<LSIDailyForecast *> *daily;
-@property NSArray<LSIHourlyForecast *> *hourly;
+@property NSMutableArray<LSIDailyForecast *> *daily;
+@property NSMutableArray<LSIHourlyForecast *> *hourly;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

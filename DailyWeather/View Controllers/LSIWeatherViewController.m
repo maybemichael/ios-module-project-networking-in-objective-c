@@ -15,6 +15,7 @@
 #import "LSICurrentForecast.h"
 #import "LSIDailyForecast.h"
 #import "LSIHourlyForecast.h"
+#import "LSIForcastFetcher.h"
 
 @interface LSIWeatherViewController () {
     BOOL _requestedLocation;
@@ -47,6 +48,10 @@
 @property (nonatomic) LSICurrentForecast *currentForecast;
 @property (nonatomic) LSIDailyForecast *dailyForecast;
 @property (nonatomic) LSIHourlyForecast *hourlyForcast;
+@property (nonatomic) LSIForcastFetcher *forcastFetcher;
+@property (nonatomic) double latitude;
+@property (nonatomic) double longitude;
+
 
 
 @end
@@ -90,8 +95,31 @@
     [self initViews];
     [self subviewConstraints];
     [self forcastWeather];
+    
+    
+    _location = [[CLLocation alloc] initWithLatitude:37.526260 longitude:-122.277070];
+    _latitude = _location.coordinate.latitude;
+    _longitude = _location.coordinate.longitude;
+    NSLog(@" %f", _latitude);
+    NSLog(@" %f", _longitude);
+    _forcastFetcher = [[LSIForcastFetcher alloc] init];
+    
+    [self.forcastFetcher fetchforcastWithLatitude:_latitude longitude:_longitude completion:^(LSIWeatherForecast * allForcast) {
+        self.weatherForecast = allForcast;
+        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self updateViews];
+//            NSLog(@"daily: %@", self.forcastFetcher.allForcast.daily.count);
+//            NSLog(@"daily: %@", self.forcastFetcher.allForcast.hourly.count);
+//            NSLog(@"count: %d", self.weatherForecast.daily.count);
+        });
+    }];
     [self updateViews];
     
+    NSLog(@"count: %d", _weatherForecast.daily.count);
+    NSLog(@"count: %d", _forcastFetcher.allForcast.daily.count);
+    
+    
+//    [self.forcastFetcher fetchForcastWithLocation:<#(CLLocationCoordinate2D)#>]
     // TODO: Transparent toolbar with info button (Settings)
     
     
@@ -409,12 +437,7 @@
     _chanceOfRainDetailLabel.text = [NSString stringWithFormat:@"%.0f %%",  _currentForecast.precipProbability];
     _uvIndexDetailLabel.text = [NSString stringWithFormat:@"%.0f",  _currentForecast.uvIndex];
     
-    _temperatureLabel.text = [NSString stringWithFormat:@"%f°F", _weatherForecast.current.temperature];
-    _feelsLikeDetailLabel.text = [NSString stringWithFormat:@"%f°F",  _weatherForecast.current.apparentTemperature];
-    _humidityDetailLabel.text = [NSString stringWithFormat:@"%f %%",  _weatherForecast.current.humidity];
-    _pressureDetailLabel.text = [NSString stringWithFormat:@"%f inHg",  _weatherForecast.current.pressure];
-    _chanceOfRainDetailLabel.text = [NSString stringWithFormat:@"%f %%",  _weatherForecast.current.precipProbability];
-    _uvIndexDetailLabel.text = [NSString stringWithFormat:@"%f",  _weatherForecast.current.uvIndex];
+    
     
     if (self.placemark) {
         self.cityStateLabel.text = [NSString stringWithFormat:@"%@, %@",
@@ -444,6 +467,16 @@
     _pressureDetailLabel.text = [NSString stringWithFormat:@"%.2f inHg",  _hourlyForcast.pressure];
     _chanceOfRainDetailLabel.text = [NSString stringWithFormat:@"%.0f %%",  _hourlyForcast.precipProbability];
     _uvIndexDetailLabel.text = [NSString stringWithFormat:@"%.0f",  _hourlyForcast.uvIndex];
+    
+    _temperatureLabel.text = [NSString stringWithFormat:@"%.0f°F", _forcastFetcher.allForcast.current.temperature];
+    _feelsLikeDetailLabel.text = [NSString stringWithFormat:@"%.0f°F", _forcastFetcher.allForcast.current.apparentTemperature];
+    _humidityDetailLabel.text = [NSString stringWithFormat:@"%.0f %%",  _forcastFetcher.allForcast.current.humidity];
+    _pressureDetailLabel.text = [NSString stringWithFormat:@"%.2f inHg",  _forcastFetcher.allForcast.current.pressure];
+    _chanceOfRainDetailLabel.text = [NSString stringWithFormat:@"%.0f %%",  _forcastFetcher.allForcast.current.precipProbability];
+    _uvIndexDetailLabel.text = [NSString stringWithFormat:@"%.0f",  _forcastFetcher.allForcast.current.uvIndex];
+    
+    NSLog(@"daily: %@", _forcastFetcher.allForcast.daily.count);
+    NSLog(@"daily: %@", _forcastFetcher.allForcast.hourly.count);
 }
 
 @end

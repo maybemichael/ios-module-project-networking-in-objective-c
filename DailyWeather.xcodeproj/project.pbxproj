@@ -21,6 +21,8 @@
 		4CBC350224245A6000030AA5 /* Daily.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC350024245A6000030AA5 /* Daily.json */; };
 		4CBC35042424687900030AA5 /* Hourly.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC35032424687900030AA5 /* Hourly.json */; };
 		4CBC35052424687900030AA5 /* Hourly.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC35032424687900030AA5 /* Hourly.json */; };
+		4CBC35092424720400030AA5 /* LSIForcastFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC35082424720400030AA5 /* LSIForcastFetcher.m */; };
+		4CBC350A2424720400030AA5 /* LSIForcastFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC35082424720400030AA5 /* LSIForcastFetcher.m */; };
 		BD69313723FD905200C0DF09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD69313623FD905200C0DF09 /* AppDelegate.m */; };
 		BD69313A23FD905200C0DF09 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD69313923FD905200C0DF09 /* SceneDelegate.m */; };
 		BD69314223FD905300C0DF09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD69314123FD905300C0DF09 /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		4CBC34FD242454C200030AA5 /* LSIDailyForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSIDailyForecast.m; sourceTree = "<group>"; };
 		4CBC350024245A6000030AA5 /* Daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Daily.json; sourceTree = "<group>"; };
 		4CBC35032424687900030AA5 /* Hourly.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Hourly.json; sourceTree = "<group>"; };
+		4CBC35072424720400030AA5 /* LSIForcastFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSIForcastFetcher.h; sourceTree = "<group>"; };
+		4CBC35082424720400030AA5 /* LSIForcastFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSIForcastFetcher.m; sourceTree = "<group>"; };
 		BD69313223FD905200C0DF09 /* DailyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD69313523FD905200C0DF09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BD69313623FD905200C0DF09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -121,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CBC3506242471AC00030AA5 /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				4CBC35072424720400030AA5 /* LSIForcastFetcher.h */,
+				4CBC35082424720400030AA5 /* LSIForcastFetcher.m */,
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
 		BD69312923FD905200C0DF09 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +155,7 @@
 		BD69313423FD905200C0DF09 /* DailyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				4CBC3506242471AC00030AA5 /* APIServices */,
 				BD69313523FD905200C0DF09 /* AppDelegate.h */,
 				BD69313623FD905200C0DF09 /* AppDelegate.m */,
 				BD69313823FD905200C0DF09 /* SceneDelegate.h */,
@@ -339,6 +353,7 @@
 			files = (
 				BD69316E23FD912000C0DF09 /* LSISettingsTableVC.m in Sources */,
 				BD69316723FD90D100C0DF09 /* LSILog.m in Sources */,
+				4CBC35092424720400030AA5 /* LSIForcastFetcher.m in Sources */,
 				BD69313723FD905200C0DF09 /* AppDelegate.m in Sources */,
 				BDFC8F7223FD999000A39B21 /* LSICardinalDirection.m in Sources */,
 				BD69316923FD90D100C0DF09 /* LSIErrors.m in Sources */,
@@ -366,6 +381,7 @@
 				BD69317323FD918B00C0DF09 /* LSIWeatherIcons.m in Sources */,
 				BD69316823FD90D100C0DF09 /* LSILog.m in Sources */,
 				4CBC34FF242454C200030AA5 /* LSIDailyForecast.m in Sources */,
+				4CBC350A2424720400030AA5 /* LSIForcastFetcher.m in Sources */,
 				BD69315223FD905400C0DF09 /* DailyWeatherTests.m in Sources */,
 				BD69316A23FD90D100C0DF09 /* LSIErrors.m in Sources */,
 			);
@@ -508,7 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = V5X7HQSSM6;
 				INFOPLIST_FILE = DailyWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -525,7 +541,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = V5X7HQSSM6;
 				INFOPLIST_FILE = DailyWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -541,8 +557,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = V5X7HQSSM6;
 				INFOPLIST_FILE = DailyWeatherTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -561,8 +578,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VXUQXR6S56;
+				DEVELOPMENT_TEAM = V5X7HQSSM6;
 				INFOPLIST_FILE = DailyWeatherTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
